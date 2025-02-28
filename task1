@@ -1,0 +1,83 @@
+import requests
+import matplotlib.pyplot as plt
+import io
+from PIL import Image
+
+# API Integration (Example: Fetching weather data from OpenWeatherMap)
+api_key = "YOUR_OPENWEATHERMAP_API_KEY"  # Replace with your API key
+city = "London"
+url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
+
+try:
+    response = requests.get(url)
+    response.raise_for_status()  # Raise HTTPError for bad responses (4xx or 5xx)
+    weather_data = response.json()
+
+    temperature = weather_data["main"]["temp"]
+    humidity = weather_data["main"]["humidity"]
+    description = weather_data["weather"][0]["description"]
+
+    print(f"Weather in {city}:")
+    print(f"Temperature: {temperature}°C")
+    print(f"Humidity: {humidity}%")
+    print(f"Description: {description}")
+
+    # Data Visualization (Example: Simple bar chart)
+    data = {"Temperature": temperature, "Humidity": humidity}
+    labels = list(data.keys())
+    values = list(data.values())
+
+    plt.figure(figsize=(8, 6))
+    plt.bar(labels, values, color=["skyblue", "lightgreen"])
+    plt.title(f"Weather Data in {city}")
+    plt.ylabel("Value")
+    plt.ylim(0, max(values) * 1.2) # Adjust y-axis limit
+
+    # Save the plot to a BytesIO object
+    buffer = io.BytesIO()
+    plt.savefig(buffer, format='png')
+    buffer.seek(0)
+    image = Image.open(buffer)
+    image.show() #this will open the image with the default image viewer.
+
+    #Alternative if you are running in a notebook environment, you can use plt.show()
+    #plt.show()
+
+except requests.exceptions.RequestException as e:
+    print(f"Error fetching data: {e}")
+except KeyError as e:
+    print(f"Error parsing data: Missing key {e}")
+
+#Another example, using a different API and a scatter plot:
+import pandas as pd
+import seaborn as sns
+
+try:
+    # Example: Fetching some sample data from a public API.
+    url = "https://jsonplaceholder.typicode.com/comments"
+    response = requests.get(url)
+    response.raise_for_status()
+    comments = response.json()
+
+    # Create a Pandas DataFrame
+    df = pd.DataFrame(comments)
+
+    # Simple scatter plot using seaborn
+    plt.figure(figsize=(10, 6))
+    sns.scatterplot(x="postId", y="id", data=df)
+    plt.title("Comments: postId vs. id")
+
+    buffer2 = io.BytesIO()
+    plt.savefig(buffer2, format='png')
+    buffer2.seek(0)
+    image2 = Image.open(buffer2)
+    image2.show()
+
+    #plt.show() #again, use this for notebooks.
+
+except requests.exceptions.RequestException as e:
+    print(f"Error fetching data: {e}")
+except KeyError as e:
+    print(f"Error parsing data: Missing key {e}")
+except Exception as e:
+    print(f"An unexpected error occured: {e}")
