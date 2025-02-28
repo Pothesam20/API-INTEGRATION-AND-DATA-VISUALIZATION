@@ -7,4 +7,4 @@
 *MENTOR*:    NEELA SANTOSH
 ## YOU HAVE TO ENTER DESCRITION OF YOUR TASK(AND IT SHOULD BE LESS THAN 500 WORDS
 # OUTPUT
-[codetech1.pdf](https://github.com/user-attachments/files/19031145/codetech1.pdf)
+![Image](https://github.com/user-attachments/assets/a7f8a43e-82e0-4357-87dc-b53d1dca2912)
