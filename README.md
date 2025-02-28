@@ -6,3 +6,5 @@
 *DURATION*:   8 WEEKS
 *MENTOR*:    NEELA SANTOSH
 ## YOU HAVE TO ENTER DESCRITION OF YOUR TASK(AND IT SHOULD BE LESS THAN 500 WORDS
+# OUTPUT
+[codetech1.pdf](https://github.com/user-attachments/files/19031145/codetech1.pdf)
