@@ -5,6 +5,8 @@
 *DOMAIN*:     PYTHON
 *DURATION*:   8 WEEKS
 *MENTOR*:    NEELA SANTOSH
+
+
 # Data Visualization and API Integration  
 
 The process of linking several software programs using Application Programming Interfaces (APIs) to facilitate smooth data sharing and interchange is known as API Integration. System-to-system or platform-to-platform communication is made possible by APIs, which serve as middlemen.  
